@@ -1,111 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title>Eric Liang</title>
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-    </head>
-    <body>
-        <!-- Top pane -->
-        <div id="top_pane">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Eric Liang</a>
-                        
-                        <!-- Create a hamburger icon -->
-                        <button id="hamburger_menu" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation_menu">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    
-                    <div id="navigation_menu" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="index.html">About Me</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        
-        <!-- Middle pane -->
-        <div id="middle_pane" class="container">
-            <div class="row">
-                <!-- Left pane -->
-                <div class="left_pane col-xs-12 col-md-7">
-                    <h1>About Me</h1>
-                    <hr>
+    <title>Hangman Game</title>
 
-                    <div class="row">
-                        <!-- Profile photo -->
-                        <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-0">
-                            <img class="img-responsive" src="assets/images/profile_photo.jpg" alt="profile photo of Eric">
-                        </div>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-                        <!-- Profile content -->
-                        <div class="col-xs-12 col-sm-8 col-md-12 col-lg-8">
-                          <p>
-                            I study Software Engineering at University of Texas at Austin. 
-                        </p>
-                        <p>
-                            I am proficient in full-stack web development, iOS development, and game development. I also have a strong
-                            interest in Machine Learning.
-                        </p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Right pane -->
-                <div class="right_pane col-xs-12 col-md-4 col-md-offset-1">
-                    <h2>Connect with Me</h2>
-                    <hr>
+</head>
 
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-2 col-md-4 col-md-offset-1">
-                            <a href="https://www.linkedin.com/in/xiaoyongliang/" target="_blank">
-                                <img class="img-responsive" src="assets/images/icon_linkedin.png" alt="link to Eric's LinkedIn page">
-                            </a>
-                        </div>
-                        
-                        <div class="col-xs-3 col-sm-2 col-sm-offset-1 col-md-4">
-                            <a href="https://github.com/ericxl/" target="_blank">
-                                <img class="img-responsive" src="assets/images/icon_github.png" alt="link to Eric's GitHub page">
-                            </a>
-                        </div>
-                        
-                        <div class="col-xs-3 col-sm-2 col-sm-offset-1 col-md-4">
-                            <a href="https://stackoverflow.com/users/2272101/eric-liang" target="_blank">
-                                <img class="img-responsive" src="assets/images/icon_stackoverflow.png" alt="link to Eric's Stack Overflow page">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body>
+    <div class="container">
+        <h1>The Hangman Game</h1>
+
+        <div id="userStats">
+            <p>Wins:
+                <strong>
+                    <span id="numWins"></span>
+                </strong>
+            </p>
+            <p>Losses:
+                <strong>
+                    <span id="numLosses"></span>
+                </strong>
+            </p>
         </div>
 
-        <!-- Bottom pane -->
-        <div id="bottom_pane">
-            <div class="container">
-                <footer>
-                  <p class="copyright">Copyright © 2018 Eric Liang</p>
-                </footer>
-            </div>
-        </div>
-    </body>
+        <p>Guess which word I'm thinking of!</p>
+        <p>
+            <span id="answerProgress"></span>
+        </p>
+        <br>
+
+        <p>Number of tries left:
+            <strong>
+                <span id="numTriesLeft"></span>
+            </strong>
+        </p>
+        <p>Your guesses so far:</p>
+        <p>
+            <strong>
+                <span id="guesses"></span>
+            </strong>
+        </p>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightBox_background"></div>
+
+    <div id="lightBox" class="container">
+        <p id="outputMessage"></p>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/listOfWords.js"></script>
+    <script type="text/javascript" src="assets/javascript/hangman.js"></script>
+</body>
+
 </html>
